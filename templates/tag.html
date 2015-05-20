@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>My thoughts tagged: <em>{{tag}}</em></h2>
+    {% with pages=pages %}
+        {% include "_list.html" %}
+    {% endwith %}
+{% endblock content%}
