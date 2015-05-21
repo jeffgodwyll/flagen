@@ -3,5 +3,10 @@
 {% block content %}
     <h2>{{ page.title }}</h2>
     {{ page.html|safe }}
-    <p>Tags {{ tag }}
+    <p>Tags
+    {% if page.meta.tags|length %}
+        {% for page_tag in page.meta.tags %}
+            <a href="{{ url_for("tag", tag=page_tag) }}">{{ page_tag }}</a>
+        {% endfor %}
+    {% endif %}
 {% endblock content %}
