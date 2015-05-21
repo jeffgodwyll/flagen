@@ -1,8 +1,7 @@
-import sys
-
 from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
+from argh import ArghParser
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -30,8 +29,22 @@ def tag(tag):
     tagged = [p for p in pages if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 
+
+def build():
+    """
+    Build site
+    """
+    freezer.freeze()
+
+
+def serve():
+    """
+    Serve site
+    """
+    app.run()
+
+
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[1] == "build":
-        freezer.freeze()
-    else:
-        app.run(port=9000)
+    parser = ArghParser()
+    parser.add_commands([build, serve])
+    parser.dispatch()
