@@ -33,6 +33,9 @@ def tag(tag):
 
 @click.group()
 def cli():
+    """
+    Flagen is a simple static site generator built on top of Frozen Flask
+    """
     pass
 
 
