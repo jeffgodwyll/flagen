@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
-from argh import ArghParser
+# from argh import ArghParser
+import click
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -30,21 +31,24 @@ def tag(tag):
     return render_template('tag.html', pages=tagged, tag=tag)
 
 
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
 def build():
     """
     Build site
     """
+    click.echo('Building site')
     freezer.freeze()
+    click.echo('Done!')
 
 
+@cli.command()
 def serve():
     """
     Serve site
     """
     app.run()
-
-
-if __name__ == '__main__':
-    parser = ArghParser()
-    parser.add_commands([build, serve])
-    parser.dispatch()
