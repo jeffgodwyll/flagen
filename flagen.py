@@ -1,12 +1,13 @@
 from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
-# from argh import ArghParser
+from jinja2 import ChoiceLoader, FileSystemLoader
 import click
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
+TEMPLATE_DIR = 'templates/simple'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -31,6 +32,11 @@ def tag(tag):
     return render_template('tag.html', pages=tagged, tag=tag)
 
 
+def custom_template(a):
+    custom_loader = ChoiceLoader([FileSystemLoader(a)])
+    app.jinja_loader = custom_loader
+
+
 @click.group()
 def cli():
     """
@@ -40,18 +46,22 @@ def cli():
 
 
 @cli.command()
-def build():
+@click.option('--template', default=TEMPLATE_DIR, type=click.Path())
+def build(template):
     """
     Build site
     """
     click.echo('Building site')
+    custom_template(template)
     freezer.freeze()
     click.echo('Done!')
 
 
 @cli.command()
-def serve():
+@click.option('--template', default=TEMPLATE_DIR, type=click.Path())
+def serve(template):
     """
     Serve site
     """
+    custom_template(template)
     app.run()
