@@ -46,7 +46,7 @@ def cli():
 
 
 @cli.command()
-@click.option('--template', default=TEMPLATE_DIR, type=click.Path())
+@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True))
 def build(template):
     """
     Build site
@@ -58,7 +58,7 @@ def build(template):
 
 
 @cli.command()
-@click.option('--template', default=TEMPLATE_DIR, type=click.Path())
+@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True))
 def serve(template):
     """
     Serve site
