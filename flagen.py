@@ -1,8 +1,9 @@
+import click
+
 from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 from jinja2 import ChoiceLoader, FileSystemLoader
-import click
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG

@@ -1,4 +1,8 @@
+import os
 from setuptools import setup
+
+with open('requirements.txt') as r:
+    req = r.read().splitlines()
 
 setup(
     name='flagen',
@@ -8,9 +12,7 @@ setup(
     description='A flask static site generator that uses markdown and jinja2 '
     'templates.',
     py_modules=['flagen'],
-    install_requires=[
-        'Click',
-    ],
+    install_requires=req,
     entry_points='''
         [console_scripts]
         flagen=flagen:cli
