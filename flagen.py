@@ -47,10 +47,11 @@ def cli():
 
 
 @cli.command()
-@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True))
+@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True),
+              help="Pass a custom template directory")
 def build(template):
     """
-    Build site
+    Build site and generate `build` folder
     """
     click.echo('Building site')
     custom_template(template)
@@ -59,7 +60,8 @@ def build(template):
 
 
 @cli.command()
-@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True))
+@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True),
+              help="Pass a custom template directory")
 def serve(template):
     """
     Serve site
