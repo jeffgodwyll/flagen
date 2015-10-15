@@ -6,6 +6,8 @@ ___________.__
    \___  /   |____/(____  /\___  /  \___  >|___|  /
         \/               \//_____/       \/      \/ 
 ```
+[![Build
+Status](https://travis-ci.org/jeffgodwyll/flagen.svg?branch=master)](https://travis-ci.org/jeffgodwyll/flagen)
 
 Flagen is a Flask Site/Blog generator.
 
