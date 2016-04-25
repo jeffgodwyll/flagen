@@ -9,6 +9,7 @@ DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 TEMPLATE_DIR = 'templates/simple'
+STATIC_DIR = 'static'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -48,8 +49,10 @@ def cli():
 
 @cli.command()
 @click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True),
-              help="Pass a custom template directory")
-def build(template):
+              help='Pass a custom template directory')
+@click.option('--static', default=STATIC_DIR, type=click.Path(exists=True),
+              help='Pass a custom static directory location')
+def build(template, static):
     """
     Build site and generate `build` folder
     """
@@ -62,7 +65,9 @@ def build(template):
 @cli.command()
 @click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True),
               help="Pass a custom template directory")
-def serve(template):
+@click.option('--static', default=STATIC_DIR, type=click.Path(exists=True),
+              help='Pass a custom static directory location')
+def serve(template, static):
     """
     Serve site
     """
