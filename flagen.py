@@ -48,7 +48,8 @@ def cli():
 
 
 @cli.command()
-@click.option('--template', default=TEMPLATE_DIR, type=click.Path(exists=True),
+@click.option('--template', default=TEMPLATE_DIR,
+              type=click.Path(exists=True, resolve_path=True),
               help='Pass a custom template directory')
 @click.option('--static', default=STATIC_DIR, type=click.Path(exists=True),
               help='Pass a custom static directory location')
