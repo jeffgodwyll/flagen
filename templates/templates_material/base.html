@@ -28,7 +28,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/static/material.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.min.css">
     <link rel="stylesheet" href="/static/styles.css">
     <style>
     #view-source {
@@ -42,13 +42,13 @@
     }
     </style>
   </head>
- 
+
   <body>
     <div class="mdl-layout__container">
       {% block main %}
       {% endblock %}
     </div>
-    <script src="/static/material.min.js"></script>
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
   </body>
   <script>
     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
