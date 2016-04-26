@@ -7,7 +7,7 @@ python:
 # command to install dependencies
 install:
   - "pip install -e ."
-  - "pip install dev_requirements.txt"
+  - "pip install -r dev_requirements.txt"
 
 # command to run tests
 script: tox
