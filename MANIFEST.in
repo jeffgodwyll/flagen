@@ -1,1 +1,1 @@
-include requirements.txt dev_requirements.txt README.md
+include requirements.txt dev_requirements.txt README.rst
