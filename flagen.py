@@ -9,6 +9,7 @@ DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FREEZER_DESTINATION = 'build'
+FREEZER_REMOVE_EXTRA_FILES = False
 TEMPLATE_DIR = 'templates/simple'
 STATIC_DIR = 'static'
 
@@ -56,13 +57,17 @@ def cli():
               help='Pass a custom static directory location')
 @click.option('--destination', type=click.Path(),
               help='Provide a custom destination for built files to reside in')
-def build(template, static, destination=None):
+@click.option('--clean', is_flag=True, help='Perform clean build')
+def build(template, static, clean, destination=None):
     """
     Build site and generate `build` folder
     """
     click.echo('Building site')
     if destination:
         app.config.update(FREEZER_DESTINATION=destination)
+    if clean:
+        app.config.update(FREEZER_REMOVE_EXTRA_FILES=True)
+
     custom_template(template)
     freezer.freeze()
     click.echo('Done!')
