@@ -8,6 +8,7 @@ from jinja2 import ChoiceLoader, FileSystemLoader
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
+FREEZER_DESTINATION = 'build'
 TEMPLATE_DIR = 'templates/simple'
 STATIC_DIR = 'static'
 
@@ -53,11 +54,15 @@ def cli():
               help='Pass a custom template directory')
 @click.option('--static', default=STATIC_DIR, type=click.Path(exists=True),
               help='Pass a custom static directory location')
-def build(template, static):
+@click.option('--destination', type=click.Path(),
+              help='Provide a custom destination for built files to reside in')
+def build(template, static, destination=None):
     """
     Build site and generate `build` folder
     """
     click.echo('Building site')
+    if destination:
+        app.config.update(FREEZER_DESTINATION=destination)
     custom_template(template)
     freezer.freeze()
     click.echo('Done!')
