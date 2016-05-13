@@ -41,12 +41,16 @@ Usages
     $ flagen build --help
     Usage: flagen build [OPTIONS]
 
-    Build site and generate a `build` folder
+      Build site and generate `build` folder
 
     Options:
-    --template PATH  Pass a custom template directory
-    --help           Show this message and exit.
-
+      --template PATH     Pass a custom template directory
+      --static PATH       Pass a custom static directory location
+      --destination PATH  Provide a custom destination for built files to reside
+                          in
+      --clean             Perform clean build
+      --help              Show this message and exit.
+    
     $ flagen serve --help
     Usage: flagen serve [OPTIONS]
 
