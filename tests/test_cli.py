@@ -11,7 +11,6 @@ def test_build():
     assert result.exit_code == 0
     assert 'Done!' in result.output
 
-
 def test_build_with_template():
     """Test build subcommand with user supplied custom template folder"""
     runner = CliRunner()
@@ -38,6 +37,13 @@ def test_build_with_static():
     assert result.exception
     assert result.exit_code == 2
     assert 'Invalid value for "--static":' in result.output
+
+
+def test_build_clean():
+    """Test clean builds"""
+    runner = CliRunner()
+    result = runner.invoke(build, ['--clean'])
+    assert result.exit_code == 0
 
 
 def test_build_all():
