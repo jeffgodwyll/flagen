@@ -39,6 +39,13 @@ def test_build_with_static():
     assert 'Invalid value for "--static":' in result.output
 
 
+def test_build_with_destination():
+    """Test build providing custom destination path"""
+    runner = CliRunner()
+    result = runner.invoke(build, ['--destination', 'test_destination'])
+    assert result.exit_code == 0
+
+
 def test_build_clean():
     """Test clean builds"""
     runner = CliRunner()
