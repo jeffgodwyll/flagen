@@ -1,3 +1,5 @@
+import os
+
 from click.testing import CliRunner
 
 from flagen import build
@@ -10,6 +12,7 @@ def test_build():
     assert not result.exception
     assert result.exit_code == 0
     assert 'Done!' in result.output
+
 
 def test_build_with_template():
     """Test build subcommand with user supplied custom template folder"""
@@ -39,10 +42,13 @@ def test_build_with_static():
     assert 'Invalid value for "--static":' in result.output
 
 
-def test_build_with_destination():
+def test_build_with_destination(tmpdir):
     """Test build providing custom destination path"""
+    destination = tmpdir.mkdir('test_destination')
     runner = CliRunner()
-    result = runner.invoke(build, ['--destination', 'test_destination'])
+    result = runner.invoke(build, ['--destination', str(destination)])
+    assert len(tmpdir.listdir()) == 1
+    assert os.path.isdir(str(destination))
     assert result.exit_code == 0
 
 
