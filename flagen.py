@@ -62,10 +62,12 @@ def build(template, static, clean, destination=None):
     """
     Build site and generate `build` folder
     """
-    click.echo('Building site')
+    click.echo('Building site...')
     if destination:
+        click.echo('Site is being stored in "{}"...'.format(destination))
         app.config.update(FREEZER_DESTINATION=destination)
     if clean:
+        click.echo('Performing a clean build, ie. building from scratch...')
         app.config.update(FREEZER_REMOVE_EXTRA_FILES=True)
 
     custom_template(template)
