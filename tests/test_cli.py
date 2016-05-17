@@ -51,6 +51,9 @@ def test_build_with_destination(tmpdir):
     assert os.path.isdir(str(destination))
     assert result.exit_code == 0
 
+    result = runner.invoke(build, ['--destination'])
+    assert 'Error: --destination option requires an argument' in result.output
+
 
 def test_build_clean():
     """Test clean builds"""
