@@ -8,7 +8,9 @@
          \/               \//_____/       \/      \/
 
 
-|Build Status|
+|Build Status| 
+|Python Support|
+|PyPi Version|
 
 Flagen is a Flask Site/Blog generator.
 
@@ -106,3 +108,9 @@ http://jeff.mit-license.org/
 
 .. |Build Status| image:: https://travis-ci.org/jeffgodwyll/flagen.svg?branch=master
    :target: https://travis-ci.org/jeffgodwyll/flagen
+
+.. |Python Support| image:: https://img.shields.io/pypi/pyversions/flagen.svg?maxAge=2592000?style=flat-square
+   :target: https://pypi.python.org/pypi/flagen/
+
+.. |PyPi Version| image:: https://img.shields.io/pypi/v/flagen.svg?maxAge=2592000?style=flat-square
+   :target: https://pypi.python.org/pypi/flagen/
