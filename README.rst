@@ -1,16 +1,18 @@
 ::
 
-    ___________.__  
-    \_   _____/|  |  _____     ____    ____    ____ 
+    ___________.__
+    \_   _____/|  |  _____     ____    ____    ____
      |    __)  |  |  \__  \   / ___\ _/ __ \  /    \
      |     \   |  |__ / __ \_/ /_/  >\  ___/ |   |  \
      \___  /   |____/(____  /\___  /  \___  >|___|  /
          \/               \//_____/       \/      \/
 
 
-|Build Status| 
+|Build Status|
 |Python Support|
 |PyPi Version|
+|Coverage Report|
+
 
 Flagen is a Flask Site/Blog generator.
 
@@ -52,7 +54,7 @@ Usages
                           in
       --clean             Perform clean build
       --help              Show this message and exit.
-    
+
     $ flagen serve --help
     Usage: flagen serve [OPTIONS]
 
@@ -114,3 +116,7 @@ http://jeff.mit-license.org/
 
 .. |PyPi Version| image:: https://img.shields.io/pypi/v/flagen.svg?maxAge=2592000?style=flat-square
    :target: https://pypi.python.org/pypi/flagen/
+
+.. |Coverage Report| image:: https://codecov.io/gh/jeffgodwyll/flagen/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/jeffgodwyll/flagen
+
