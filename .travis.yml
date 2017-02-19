@@ -16,3 +16,6 @@ install:
 script:
   # Tests
   - tox
+
+after_success:
+  - codecov
